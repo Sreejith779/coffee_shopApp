@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                               .toString()),fit: BoxFit.cover
                                       )),
                                   height: 160,
-                                 margin: EdgeInsets.only(bottom: 130),
+                                 margin: const EdgeInsets.only(bottom: 130),
                                   width: 190,
                                 ),
                               ),
@@ -127,13 +127,12 @@ class _HomePageState extends State<HomePage> {
                                     color: Colors.white.withOpacity(0.9)
                                   ),),),
                               Positioned(
-
                                   top: 190,
                               left: 28,
 
                                   child:
                                   Container(
-                                    padding: EdgeInsets.all(5),
+                                    padding: const EdgeInsets.all(5),
                                     width: 70,
                                     height: 30,
                                 decoration: BoxDecoration(
