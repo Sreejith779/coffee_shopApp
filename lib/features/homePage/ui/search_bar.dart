@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
+
   const Search({super.key});
 
   @override
@@ -31,6 +32,11 @@ class _SearchState extends State<Search> {
           ),
           child:  TextField(
             controller: _searchController,
+            onChanged: (index){
+              setState(() {
+                _searchQuery = index;
+              });
+            },
             decoration: const InputDecoration(
               hintText: "Search",
               border: InputBorder.none,
@@ -43,9 +49,17 @@ class _SearchState extends State<Search> {
             child: CircleAvatar(
               backgroundColor: Colors.grey.withOpacity(0.5),
               radius: 30,
-              child: const Icon(Icons.search_rounded,color: Colors.white,size: 28,),
+              child:  IconButton(onPressed: (){
+                searchFunction();
+              }, icon:
+              const Icon(Icons.search_rounded,color: Colors.white,size: 28,)),
             ))
       ],
     );
+  }
+  
+  void searchFunction(){
+    String searchQuery = _searchController.text;
+    print("Searching $searchQuery");
   }
 }
