@@ -8,6 +8,15 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+
+  final TextEditingController _searchController = TextEditingController();
+  String _searchQuery = "";
+
+  @override
+  void dispose() {
+   _searchController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -20,8 +29,9 @@ class _SearchState extends State<Search> {
             color: Colors.brown.withOpacity(0.2),
             borderRadius: BorderRadius.circular(25),
           ),
-          child: const TextField(
-            decoration: InputDecoration(
+          child:  TextField(
+            controller: _searchController,
+            decoration: const InputDecoration(
               hintText: "Search",
               border: InputBorder.none,
             ),

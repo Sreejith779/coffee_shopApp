@@ -92,7 +92,6 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index, realIndex) {
                           return Stack(
                             children: [
-                             
                               Padding(
                                 padding: const EdgeInsets.only(top: 30),
                                 child: Container(
@@ -100,7 +99,6 @@ class _HomePageState extends State<HomePage> {
                                   decoration: BoxDecoration(
                                       color: Colors.brown,
                                       borderRadius: BorderRadius.circular(20)),
-                                  
                                 ),
                               ),
                               Positioned(
@@ -110,66 +108,77 @@ class _HomePageState extends State<HomePage> {
                                       image: DecorationImage(
                                           image: NetworkImage(loadedState
                                               .coffeeModel[index].image
-                                              .toString()),fit: BoxFit.cover
-                                      )),
+                                              .toString()),
+                                          fit: BoxFit.cover)),
                                   height: 160,
-                                 margin: const EdgeInsets.only(bottom: 130),
+                                  margin: const EdgeInsets.only(bottom: 130),
                                   width: 190,
                                 ),
                               ),
                               Positioned(
-                                  left:30,
-                              top: 160,
-                                  child: Text(loadedState.coffeeModel[index].name,
+                                left: 30,
+                                top: 160,
+                                child: Text(
+                                  loadedState.coffeeModel[index].name,
                                   style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white.withOpacity(0.9)
-                                  ),),),
-                              Positioned(
-                                  top: 190,
-                              left: 28,
-
-                                  child:
-                                  Container(
-                                    padding: const EdgeInsets.all(5),
-                                    width: 70,
-                                    height: 30,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(12)
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white.withOpacity(0.9)),
                                 ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(Icons.star,color: Colors.white,size: 20,),
-                                        const SizedBox(width: 5,),
-                                        Center(
-                                          child: Text(loadedState.coffeeModel[index].rating.toString(),
+                              ),
+                              Positioned(
+                                top: 190,
+                                left: 28,
+                                child: Container(
+                                  padding: const EdgeInsets.all(5),
+                                  width: 70,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.2),
+                                      borderRadius: BorderRadius.circular(12)),
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.star,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Center(
+                                        child: Text(
+                                          loadedState.coffeeModel[index].rating
+                                              .toString(),
                                           style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white
-                                          ),),
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white),
                                         ),
-                                      ],
-                                    ),
-                                  ),),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                               const Positioned(
-                                top: 210,
+                                  top: 210,
                                   left: 170,
                                   child: Row(
                                     children: [
-                                      Text("Vol. ",style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 15
-                                      ),),
-                                      Text("160ml.",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white
-                                      ),),
+                                      Text(
+                                        "Vol. ",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15),
+                                      ),
+                                      Text(
+                                        "160ml.",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
                                     ],
                                   )),
                               const Positioned(
@@ -178,17 +187,22 @@ class _HomePageState extends State<HomePage> {
                                   child: CircleAvatar(
                                     backgroundColor: Colors.white,
                                     radius: 35,
-                                    child: Icon(Icons.add,size: 40,color: Colors.brown,),
+                                    child: Icon(
+                                      Icons.add,
+                                      size: 40,
+                                      color: Colors.brown,
+                                    ),
                                   )),
                               Positioned(
                                   top: 270,
                                   left: 30,
-                                  child: Text('Rs ${loadedState.coffeeModel[index].price.toString()}',
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white
-                                  ),))
+                                  child: Text(
+                                    'Rs ${loadedState.coffeeModel[index].price.toString()}',
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ))
                             ],
                           );
                         },
