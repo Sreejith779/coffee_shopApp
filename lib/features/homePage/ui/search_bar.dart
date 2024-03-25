@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
 
+
   const Search({super.key});
 
   @override
@@ -11,7 +12,7 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
 
   final TextEditingController _searchController = TextEditingController();
-  String _searchQuery = "";
+
 
   @override
   void dispose() {
@@ -32,11 +33,6 @@ class _SearchState extends State<Search> {
           ),
           child:  TextField(
             controller: _searchController,
-            onChanged: (index){
-              setState(() {
-                _searchQuery = index;
-              });
-            },
             decoration: const InputDecoration(
               hintText: "Search",
               border: InputBorder.none,

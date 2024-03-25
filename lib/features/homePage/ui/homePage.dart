@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coffee_shop/features/homePage/ui/search_bar.dart';
+import 'package:coffee_shop/model/coffee_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  TextEditingController _searchController = TextEditingController();
   @override
   void initState() {
     homeBloc.add(HomeInitialEvent());
@@ -31,6 +33,8 @@ class _HomePageState extends State<HomePage> {
         switch (state.runtimeType) {
           case HomeLoadedState:
             final loadedState = state as HomeLoadedState;
+            final List<CoffeeModel>filteredList = loadedState.coffeeModel.where((element)
+            => element.name.toLowerCase().contains(_searchController.text.toLowerCase())).toList();
             return Scaffold(
               body: Column(
                 children: [
