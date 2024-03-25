@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                             image: AssetImage("assets/coffee.jpg"),
                             fit: BoxFit.contain)),
                   ),
-                  const Search(),
+                   Search(),
                   Container(
                       padding: const EdgeInsets.all(10),
                       alignment: Alignment.topLeft,
