@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController _searchController = TextEditingController();
+  String _searchQuary = '';
   @override
   void initState() {
     homeBloc.add(HomeInitialEvent());
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           case HomeLoadedState:
             final loadedState = state as HomeLoadedState;
             final List<CoffeeModel>filteredList = loadedState.coffeeModel.where((element)
-            => element.name.toLowerCase().contains(_searchController.text.toLowerCase())).toList();
+            => element.name.toLowerCase().contains(_searchQuary.toLowerCase())).toList();
             return Scaffold(
               body: Column(
                 children: [
@@ -45,7 +45,11 @@ class _HomePageState extends State<HomePage> {
                             image: AssetImage("assets/coffee.jpg"),
                             fit: BoxFit.contain)),
                   ),
-                   Search(),
+                   Search(onSearch: (searchQuary ) {
+                     setState(() {
+                    _searchQuary = searchQuary;
+                     });
+                   },),
                   Container(
                       padding: const EdgeInsets.all(10),
                       alignment: Alignment.topLeft,
