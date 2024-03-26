@@ -49,6 +49,7 @@ class _SearchState extends State<Search> {
               radius: 30,
               child: IconButton(onPressed: () {
                 widget.onSearch(_searchController.text);
+                print("Searching : ${_searchController.text}");
               }, icon:
               const Icon(Icons.search_rounded, color: Colors.white, size: 28,)),
             ))

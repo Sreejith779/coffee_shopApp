@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _searchQuary = '';
+  String _searchQuery = '';
   @override
   void initState() {
     homeBloc.add(HomeInitialEvent());
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           case HomeLoadedState:
             final loadedState = state as HomeLoadedState;
             final List<CoffeeModel>filteredList = loadedState.coffeeModel.where((element)
-            => element.name.toLowerCase().contains(_searchQuary.toLowerCase())).toList();
+            => element.name.toLowerCase().contains(_searchQuery.toLowerCase())).toList();
             return Scaffold(
               body: Column(
                 children: [
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                    Search(onSearch: (searchQuary ) {
                      setState(() {
-                    _searchQuary = searchQuary;
+                    _searchQuery = searchQuary;
                      });
                    },),
                   Container(
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 350,
                     child: CarouselSlider.builder(
-                        itemCount: loadedState.coffeeModel.length,
+                        itemCount: filteredList.length,
                         itemBuilder: (context, index, realIndex) {
                           return Stack(
                             children: [
@@ -114,8 +114,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
-                                          image: NetworkImage(loadedState
-                                              .coffeeModel[index].image
+                                          image: NetworkImage(filteredList[index].image
                                               .toString()),
                                           fit: BoxFit.cover)),
                                   height: 160,
@@ -127,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                                 left: 30,
                                 top: 160,
                                 child: Text(
-                                  loadedState.coffeeModel[index].name,
+                                  filteredList[index].name,
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w700,
@@ -156,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       Center(
                                         child: Text(
-                                          loadedState.coffeeModel[index].rating
+                                          filteredList[index].rating
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 15,
@@ -205,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                                   top: 270,
                                   left: 30,
                                   child: Text(
-                                    'Rs ${loadedState.coffeeModel[index].price.toString()}',
+                                    'Rs ${filteredList[index].price.toString()}',
                                     style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600,
