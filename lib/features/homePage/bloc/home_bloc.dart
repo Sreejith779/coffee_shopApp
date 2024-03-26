@@ -12,9 +12,14 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
    on<HomeInitialEvent>(homeInitialEvent);
+   on<AddNavigateEvent>(addNavigateEvent);
   }
 
   FutureOr<void> homeInitialEvent(HomeInitialEvent event, Emitter<HomeState> emit) {
     emit(HomeLoadedState());
+  }
+
+  FutureOr<void> addNavigateEvent(AddNavigateEvent event, Emitter<HomeState> emit) {
+    emit(AddNavigateActionState());
   }
 }

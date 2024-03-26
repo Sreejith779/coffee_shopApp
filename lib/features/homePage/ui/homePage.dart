@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:coffee_shop/features/buyNow/ui/buyNow.dart';
 import 'package:coffee_shop/features/homePage/ui/search_bar.dart';
 import 'package:coffee_shop/model/coffee_model.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,10 @@ class _HomePageState extends State<HomePage> {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
       listener: (context, state) {
-        // TODO: implement listener
+  if(state is AddNavigateActionState){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>
+    BuyNow()));
+  }
       },
       builder: (context, state) {
         switch (state.runtimeType) {
@@ -188,18 +192,25 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ],
                                   )),
-                              const Positioned(
+                               Positioned(
                                   top: 250,
                                   left: 190,
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    radius: 35,
-                                    child: Icon(
-                                      Icons.add,
-                                      size: 40,
-                                      color: Colors.brown,
+                                  child: InkWell(
+                                    child: const CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      radius: 35,
+                                      child: Icon(
+                                        Icons.add,
+                                        size: 40,
+                                        color: Colors.brown,
+                                      ),
                                     ),
-                                  )),
+                                    onTap: (){
+                                      homeBloc
+                                      .add(AddNavigateEvent(addCoffee: loadedState.coffeeModel[index])); 
+                                    },
+                                  )
+                              ),
                               Positioned(
                                   top: 270,
                                   left: 30,

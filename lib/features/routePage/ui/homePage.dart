@@ -1,7 +1,9 @@
-import 'package:coffee_shop/features/basketPage/ui/basketPage.dart';
+
 import 'package:coffee_shop/features/homePage/ui/homePage.dart';
 import 'package:coffee_shop/features/wishListPage/ui/wishListPage.dart';
 import 'package:flutter/material.dart';
+
+import '../../personPage/ui/personPage.dart';
 
 
 class RoutePage extends StatefulWidget {
@@ -16,7 +18,7 @@ class _RoutePageState extends State<RoutePage> {
   final _tabs = [
     HomePage(),
     WishList(),
-    Basket()
+    Person()
   ];
 
   @override
@@ -34,7 +36,7 @@ class _RoutePageState extends State<RoutePage> {
               destinations: const [
                 NavigationDestination(icon: Icon(Icons.home), label: "Home"),
                 NavigationDestination(icon: Icon(Icons.favorite_outline), label: "Favourite"),
-                NavigationDestination(icon: Icon(Icons.shopping_bag_outlined), label: "Basket"),
+                NavigationDestination(icon: Icon(Icons.person_2_outlined), label: "Person"),
                 // NavigationDestination(icon: Icon(Icons.person_2_outlined), label: "Person"),
               ]),
           body: _tabs[isSelect],

@@ -4,3 +4,11 @@ part of 'home_bloc.dart';
 abstract class HomeEvent {}
 
 class HomeInitialEvent extends HomeEvent{}
+
+class AddNavigateEvent extends HomeEvent{
+  final CoffeeModel addCoffee;
+
+  AddNavigateEvent({required this.addCoffee});
+
+
+}
