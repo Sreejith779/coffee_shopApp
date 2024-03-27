@@ -231,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       onTap: () {
-                                        homeBloc.add(AddClickEvent());
+                                        homeBloc.add(AddClickEvent(clickedProduct: loadedState.coffeeModel[index]));
                                       },
                                     )),
                                 Positioned(

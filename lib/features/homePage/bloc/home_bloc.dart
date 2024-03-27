@@ -2,6 +2,7 @@ import 'dart:async';
 
 
 import 'package:bloc/bloc.dart';
+import 'package:coffee_shop/model/buyList.dart';
 import 'package:coffee_shop/model/coffee_modelData.dart';
 import 'package:meta/meta.dart';
 
@@ -29,6 +30,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> addClickEvent(AddClickEvent event, Emitter<HomeState> emit) {
+    buyList.add(event.clickedProduct);
     emit(AddClickedState());
   }
 }
