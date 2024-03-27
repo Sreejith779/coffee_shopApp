@@ -36,7 +36,7 @@ class _RoutePageState extends State<RoutePage> {
               destinations: const [
                 NavigationDestination(icon: Icon(Icons.home), label: "Home"),
                 NavigationDestination(icon: Icon(Icons.favorite_outline), label: "Favourite"),
-                NavigationDestination(icon: Icon(Icons.person_2_outlined), label: "Person"),
+                NavigationDestination(icon: Icon(Icons.coffee_maker_rounded,color: Colors.brown,), label: "Buy"),
                 // NavigationDestination(icon: Icon(Icons.person_2_outlined), label: "Person"),
               ]),
           body: _tabs[isSelect],

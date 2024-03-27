@@ -10,6 +10,10 @@ class BuyNow extends StatefulWidget {
 class _BuyNowState extends State<BuyNow> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Items"),
+      ),
+    );
   }
 }

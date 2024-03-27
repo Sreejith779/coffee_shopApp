@@ -12,4 +12,7 @@ final List<CoffeeModel>coffeeModel = coffeeList.map((e) =>
         price: e['price'], categories: e['categories'], about: e['about'], image: e['image'])).toList();
 }
 
-class AddNavigateActionState extends HomeActionState{}
+class HomeLoadingState extends HomeState{}
+class AddNavigateActionState extends HomeActionState{
+}
+class AddClickedState extends HomeActionState{}
