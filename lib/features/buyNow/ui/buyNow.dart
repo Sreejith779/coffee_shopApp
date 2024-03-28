@@ -38,15 +38,75 @@ class _BuyNowState extends State<BuyNow> {
                 children: [
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.all(20),
-                      child: ListView.builder(
-                          itemCount: buyList.length,
-                          itemBuilder: (context,index){
-                            return Container(
-                              height: 40,
-                              child: Text(buyList[index].name),
-                            );
-                          }),
+                      margin: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                                itemCount: buyList.length,
+                                itemBuilder: (context,index){
+                                  return SizedBox(
+                                    height: 40,
+                                    child: Row(
+                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(buyList[index].name,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18
+                                        ),),
+                                     Text('x ${buyList[index].price.toString()} Rs'),
+                                     Container(
+                                       child: Row(
+                                         children: [
+                                           IconButton(onPressed: (){},
+                                               icon: const Icon(Icons.remove)),
+                                           const SizedBox(width: 5,
+                                           child: Text("1"),),
+                                           IconButton(onPressed: (){},
+                                               icon: const Icon(Icons.add,
+                                               size: 22,))
+                                         ],
+                                       ),
+                                     )
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(20),
+                            height: 120,
+                           decoration: BoxDecoration(
+                             color: Colors.brown.withOpacity(0.4),
+                             borderRadius: BorderRadius.circular(15)
+                           ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Total Amount 120rs",
+                                style: TextStyle(fontSize: 20,
+                                fontWeight: FontWeight.w600),),
+
+                                Container(
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.8),
+                                    borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  child: const Center(
+                                    child: Text("Buy",
+                                                                    style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600
+                                                                    ),),
+                                  ),)
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
