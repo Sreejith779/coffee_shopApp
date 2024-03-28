@@ -11,9 +11,16 @@ part 'buy_state.dart';
 class BuyBloc extends Bloc<BuyEvent, BuyState> {
   BuyBloc() : super(BuyInitial()) {
  on<BuyInitialEvent>(buyInitialEvent);
+ on<IncrementEvent>(incrementEvent);
   }
 
   FutureOr<void> buyInitialEvent(BuyInitialEvent event, Emitter<BuyState> emit) {
     emit(BuyLoadedState(buyModel: buyList));
+  }
+
+  FutureOr<void> incrementEvent(IncrementEvent event, Emitter<BuyState> emit) {
+    for(int i = 1; i<=10; i++){
+
+    }
   }
 }

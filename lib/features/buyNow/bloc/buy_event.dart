@@ -4,3 +4,7 @@ part of 'buy_bloc.dart';
 abstract class BuyEvent {}
 
 class BuyInitialEvent extends BuyEvent{}
+
+class IncrementEvent extends BuyEvent{
+
+}

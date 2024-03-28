@@ -12,6 +12,8 @@ class BuyNow extends StatefulWidget {
 }
 
 class _BuyNowState extends State<BuyNow> {
+   int count = 1;
+   double totalAmount = 0;
   @override
   void initState() {
   buyBloc.add(BuyInitialEvent());
@@ -45,6 +47,8 @@ class _BuyNowState extends State<BuyNow> {
                             child: ListView.builder(
                                 itemCount: buyList.length,
                                 itemBuilder: (context,index){
+                                  double totalSum = buyList[index].price*count;
+                                  totalAmount = count*totalSum;
                                   return SizedBox(
                                     height: 40,
                                     child: Row(
@@ -60,11 +64,24 @@ class _BuyNowState extends State<BuyNow> {
                                      Container(
                                        child: Row(
                                          children: [
-                                           IconButton(onPressed: (){},
+                                           IconButton(onPressed: (){
+                                             setState(() {
+                                               count--;
+                                             });
+                                           },
                                                icon: const Icon(Icons.remove)),
-                                           const SizedBox(width: 5,
-                                           child: Text("1"),),
-                                           IconButton(onPressed: (){},
+                                            SizedBox(width: 25,
+                                           child: Text(count.toString()),),
+                                           IconButton(onPressed: (){
+                                           setState(() {
+                                             for(int i = 1; i<=10;i++){
+                                             }
+                                             count++;
+totalAmount = totalAmount+buyList[index].price;
+
+
+                                           });
+                                           },
                                                icon: const Icon(Icons.add,
                                                size: 22,))
                                          ],
@@ -85,8 +102,8 @@ class _BuyNowState extends State<BuyNow> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text("Total Amount 120rs",
-                                style: TextStyle(fontSize: 20,
+                                 Text("Total Amount ${totalAmount.toString()} rs",
+                                style: const TextStyle(fontSize: 20,
                                 fontWeight: FontWeight.w600),),
 
                                 Container(
