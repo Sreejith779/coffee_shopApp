@@ -13,7 +13,7 @@ class BuyNow extends StatefulWidget {
 
 class _BuyNowState extends State<BuyNow> {
    int count = 1;
-   double totalAmount = 0;
+   double totalSum = 0;
   @override
   void initState() {
   buyBloc.add(BuyInitialEvent());
@@ -27,7 +27,20 @@ class _BuyNowState extends State<BuyNow> {
       listenWhen: (previous,current)=>(current is BuyActionState),
       buildWhen: (previous,current)=>(current is !BuyActionState),
       listener: (context, state) {
-        // TODO: implement listener
+     if(state is IncrementActionState){
+ setState(() {
+ if(count>=1){
+   setState(() {
+     count++;
+   });
+ }
+ });
+     }
+     else if(state is DecrementActionState){
+    setState(() {
+      count--;
+    });
+     }
       },
       builder: (context, state) {
         switch(state.runtimeType){
@@ -47,8 +60,8 @@ class _BuyNowState extends State<BuyNow> {
                             child: ListView.builder(
                                 itemCount: buyList.length,
                                 itemBuilder: (context,index){
-                                  double totalSum = buyList[index].price*count;
-                                  totalAmount = count*totalSum;
+                                  double totalAmount = buyList[index].price;
+                                   totalSum = totalAmount*count;
                                   return SizedBox(
                                     height: 40,
                                     child: Row(
@@ -65,22 +78,13 @@ class _BuyNowState extends State<BuyNow> {
                                        child: Row(
                                          children: [
                                            IconButton(onPressed: (){
-                                             setState(() {
-                                               count--;
-                                             });
+                                         buyBloc.add(DecrementEvent(decrementAmount: count));
                                            },
                                                icon: const Icon(Icons.remove)),
                                             SizedBox(width: 25,
                                            child: Text(count.toString()),),
                                            IconButton(onPressed: (){
-                                           setState(() {
-                                             for(int i = 1; i<=10;i++){
-                                             }
-                                             count++;
-totalAmount = totalAmount+buyList[index].price;
-
-
-                                           });
+                                             buyBloc.add(IncrementEvent(incrementAmount:count));
                                            },
                                                icon: const Icon(Icons.add,
                                                size: 22,))
@@ -102,7 +106,7 @@ totalAmount = totalAmount+buyList[index].price;
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                 Text("Total Amount ${totalAmount.toString()} rs",
+                                 Text("Total Amount ${totalSum.toString()} rs",
                                 style: const TextStyle(fontSize: 20,
                                 fontWeight: FontWeight.w600),),
 

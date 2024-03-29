@@ -12,6 +12,7 @@ class BuyBloc extends Bloc<BuyEvent, BuyState> {
   BuyBloc() : super(BuyInitial()) {
  on<BuyInitialEvent>(buyInitialEvent);
  on<IncrementEvent>(incrementEvent);
+ on<DecrementEvent>(decrementEvent);
   }
 
   FutureOr<void> buyInitialEvent(BuyInitialEvent event, Emitter<BuyState> emit) {
@@ -19,8 +20,12 @@ class BuyBloc extends Bloc<BuyEvent, BuyState> {
   }
 
   FutureOr<void> incrementEvent(IncrementEvent event, Emitter<BuyState> emit) {
-    for(int i = 1; i<=10; i++){
+    emit(IncrementActionState());
+  }
 
-    }
+  FutureOr<void> decrementEvent(DecrementEvent event, Emitter<BuyState> emit) {
+
+    emit(DecrementActionState());
+
   }
 }

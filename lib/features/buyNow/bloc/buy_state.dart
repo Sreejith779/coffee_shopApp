@@ -12,4 +12,6 @@ class BuyLoadedState extends BuyState{
   BuyLoadedState({required this.buyModel});
 }
 
-class IncrementActionState extends BuyState{}
+class IncrementActionState extends  BuyActionState{}
+class DecrementActionState extends BuyActionState{}
+class TotalAmountActionState extends BuyActionState{}
