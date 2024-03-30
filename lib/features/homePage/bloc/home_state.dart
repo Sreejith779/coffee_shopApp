@@ -16,3 +16,7 @@ class HomeLoadingState extends HomeState{}
 class AddNavigateActionState extends HomeActionState{
 }
 class AddClickedState extends HomeActionState{}
+
+class FavoriteNavigateActionState extends HomeActionState{
+
+}

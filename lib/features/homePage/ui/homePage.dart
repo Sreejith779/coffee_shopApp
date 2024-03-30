@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   HomeBloc homeBloc = HomeBloc();
-  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +36,8 @@ class _HomePageState extends State<HomePage> {
         if (state is AddClickedState) {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text("Coffee Added")));
+        }else if(state is FavoriteNavigateActionState){
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Wishlisted")));
         }
       },
       builder: (context, state) {
@@ -244,32 +245,17 @@ class _HomePageState extends State<HomePage> {
                                     left: 220,
                                     child: IconButton(
                                       onPressed: () {
-                                     setState(() {
-                                       isFavorite = !isFavorite;
-                                     });
-
+homeBloc.add(FavoriteNavigateEvent(favorite:loadedState.coffeeModel[index]));
                                       },
                                       icon:
-                                      Icon(
+                                      const Icon(
                                         Icons.favorite,
-                                        color: isFavorite? Colors.white:Colors.red,
+                                        color: Colors.white,
                                       ),
                                     )
             ),
-         Positioned(
-             top: 150,
-             left: 220,
-             child: IconButton(
-               onPressed: () {
-                 },
-               icon: const
-               Icon(
-                 Icons.favorite,
-                 color: Colors.red,
-               ),
-             )
-         )
-                                ,
+
+
                                 Positioned(
                                     top: 270,
                                     left: 30,

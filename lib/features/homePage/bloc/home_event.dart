@@ -17,3 +17,9 @@ class AddNavigateEvent extends HomeEvent{
   AddNavigateEvent({required this.addCoffee});
 
 }
+
+class  FavoriteNavigateEvent extends HomeEvent{
+  final CoffeeModel favorite;
+
+  FavoriteNavigateEvent({required this.favorite});
+}
