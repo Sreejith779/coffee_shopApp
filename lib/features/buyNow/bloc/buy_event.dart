@@ -9,12 +9,18 @@ class IncrementEvent extends BuyEvent{
 final int incrementAmount;
 
   IncrementEvent({required this.incrementAmount});
+
+
+
+
 }
 
 class DecrementEvent extends BuyEvent{
   final int decrementAmount;
+  final CoffeeModel buyList;
 
-  DecrementEvent({required this.decrementAmount});
+
+  DecrementEvent({required this.decrementAmount,required this.buyList});
 }
 
 class TotalAmountEvent extends BuyEvent{
@@ -22,3 +28,6 @@ class TotalAmountEvent extends BuyEvent{
 
   TotalAmountEvent({required this.totalAmount});
 }
+
+
+class ItemRemoveEvent extends BuyEvent{}

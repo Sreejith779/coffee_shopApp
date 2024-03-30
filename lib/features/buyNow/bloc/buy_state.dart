@@ -15,3 +15,4 @@ class BuyLoadedState extends BuyState{
 class IncrementActionState extends  BuyActionState{}
 class DecrementActionState extends BuyActionState{}
 class TotalAmountActionState extends BuyActionState{}
+class ItemRemoveActionState extends BuyActionState{}

@@ -1,6 +1,7 @@
 import 'package:coffee_shop/model/buyList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 import '../bloc/buy_bloc.dart';
 
@@ -13,7 +14,7 @@ class BuyNow extends StatefulWidget {
 
 class _BuyNowState extends State<BuyNow> {
    int count = 1;
-   double totalSum = 0;
+   double totalSum = 1;
   @override
   void initState() {
   buyBloc.add(BuyInitialEvent());
@@ -29,7 +30,7 @@ class _BuyNowState extends State<BuyNow> {
       listener: (context, state) {
      if(state is IncrementActionState){
  setState(() {
- if(count>=1){
+ if(count>=0){
    setState(() {
      count++;
    });
@@ -38,18 +39,28 @@ class _BuyNowState extends State<BuyNow> {
      }
      else if(state is DecrementActionState){
     setState(() {
-      count--;
+      if(count>=1){
+        setState(() {
+          count--;
+        });
+      }
     });
      }
       },
       builder: (context, state) {
+        bool isEmpty = buyList.isEmpty;
         switch(state.runtimeType){
           case BuyLoadedState:
             return Scaffold(
               appBar: AppBar(
                 title: const Text("Items"),
               ),
-              body: Column(
+              body:
+ isEmpty?
+  Center(
+   child: Lottie.network("https://lottie.host/0dfbbb3c-46d5-4779-9ec3-b1b2458f48f1/ukDzDgJgAW.json",
+   height: 280),):
+ Column(
                 children: [
                   Expanded(
                     child: Container(
@@ -61,7 +72,7 @@ class _BuyNowState extends State<BuyNow> {
                                 itemCount: buyList.length,
                                 itemBuilder: (context,index){
                                   double totalAmount = buyList[index].price;
-                                   totalSum = totalAmount*count;
+
                                   return SizedBox(
                                     height: 40,
                                     child: Row(
@@ -78,7 +89,7 @@ class _BuyNowState extends State<BuyNow> {
                                        child: Row(
                                          children: [
                                            IconButton(onPressed: (){
-                                         buyBloc.add(DecrementEvent(decrementAmount: count));
+                                         buyBloc.add(DecrementEvent(decrementAmount: count, buyList: buyList[index]));
                                            },
                                                icon: const Icon(Icons.remove)),
                                             SizedBox(width: 25,
@@ -106,7 +117,7 @@ class _BuyNowState extends State<BuyNow> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                 Text("Total Amount ${totalSum.toString()} rs",
+                                 Text("Total Amount $totalAmount rs",
                                 style: const TextStyle(fontSize: 20,
                                 fontWeight: FontWeight.w600),),
 
@@ -131,8 +142,7 @@ class _BuyNowState extends State<BuyNow> {
                     ),
                   ),
                 ],
-              ),
-            );
+              ));
           default:
             return Center(child: Text("Error"));
         }

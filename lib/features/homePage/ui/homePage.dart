@@ -1,3 +1,5 @@
+
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coffee_shop/features/homePage/ui/search_bar.dart';
 import 'package:coffee_shop/model/coffee_model.dart';
@@ -23,6 +25,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   HomeBloc homeBloc = HomeBloc();
+  bool isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
@@ -235,16 +239,37 @@ class _HomePageState extends State<HomePage> {
                                             amount: loadedState.coffeeModel[index].price));
                                       },
                                     )),
-                                Positioned(
+                      Positioned(
                                     top: 150,
                                     left: 220,
                                     child: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
+                                      onPressed: () {
+                                     setState(() {
+                                       isFavorite = !isFavorite;
+                                     });
+
+                                      },
+                                      icon:
+                                      Icon(
                                         Icons.favorite,
-                                        color: Colors.white,
+                                        color: isFavorite? Colors.white:Colors.red,
                                       ),
-                                    )),
+                                    )
+            ),
+         Positioned(
+             top: 150,
+             left: 220,
+             child: IconButton(
+               onPressed: () {
+                 },
+               icon: const
+               Icon(
+                 Icons.favorite,
+                 color: Colors.red,
+               ),
+             )
+         )
+                                ,
                                 Positioned(
                                     top: 270,
                                     left: 30,

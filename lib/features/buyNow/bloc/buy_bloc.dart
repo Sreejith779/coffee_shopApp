@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:coffee_shop/features/buyNow/ui/buyNow.dart';
 import 'package:coffee_shop/model/buyList.dart';
 import 'package:coffee_shop/model/coffee_model.dart';
 import 'package:meta/meta.dart';
@@ -24,6 +25,9 @@ class BuyBloc extends Bloc<BuyEvent, BuyState> {
   }
 
   FutureOr<void> decrementEvent(DecrementEvent event, Emitter<BuyState> emit) {
+    if(event.decrementAmount==1){
+      buyList.remove(event.buyList);
+    }
 
     emit(DecrementActionState());
 
