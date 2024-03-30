@@ -8,3 +8,6 @@ class WishListInitial extends WishListState {}
 
 
 class WishListLoadedState extends WishListState{}
+
+class RemoveActionState extends WishListActionState{}
+
