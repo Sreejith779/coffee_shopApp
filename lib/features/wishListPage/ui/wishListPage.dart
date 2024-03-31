@@ -26,9 +26,10 @@ class _WishListState extends State<WishList> {
       listenWhen: (previous, current) => (current is WishListActionState),
       buildWhen: (previous, current) => (current is! WishListActionState),
       listener: (context, state) {
-      if(state is RemoveActionState){
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Item removed")));
-      }
+        if (state is RemoveActionState) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text("Item removed")));
+        }
       },
       builder: (context, state) {
         switch (state.runtimeType) {
@@ -38,50 +39,60 @@ class _WishListState extends State<WishList> {
                 title: const Text("Favorite"),
               ),
               body: Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: Column(
                   children: [
                     Expanded(
                       child: ListView.builder(
                           itemCount: favoriteList.length,
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.only(
-                                        top: 5, left: 20, right: 20),
-                                    decoration: BoxDecoration(
-                                        color: Colors.brown.withOpacity(0.2),
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    width: double.maxFinite,
-                                    height: 80,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                            bool isEmpty = favoriteList.isNotEmpty;
+
+                       return
+                         Container(
+                                    padding: const EdgeInsets.all(10),
+                                    child:
+                                    Column(
+                                      crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          favoriteList[index].name,
-                                          style: const TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w500),
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                              top: 5, left: 20, right: 20),
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  Colors.brown.withOpacity(0.2),
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          width: double.maxFinite,
+                                          height: 80,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                favoriteList[index].name,
+                                                  style: const TextStyle(
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                              IconButton(
+                                                  onPressed: () {
+                                                    wishListBloc.add(
+                                                        RemoveItemEvent(
+                                                            remove:
+                                                                favoriteList[
+                                                                    index]));
+                                                  },
+                                                  icon: const Icon(
+                                                      Icons.delete_outline))
+                                            ],
+                                          ),
                                         ),
-                                        IconButton(
-                                            onPressed: () {
-                                              wishListBloc.add(RemoveItemEvent(
-                                                  remove: favoriteList[index]));
-                                            },
-                                            icon: const Icon(
-                                                Icons.delete_outline))
                                       ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
+                                  );
                           }),
                     )
                   ],

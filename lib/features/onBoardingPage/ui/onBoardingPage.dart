@@ -28,7 +28,7 @@ boardingBloc.add(BoardingInitialEvent());
 
       listener: (context, state) {
 if(state is NavigateBoardingActionState){
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>RoutePage()));
+Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RoutePage()));
 }
       },
       builder: (context, state) {
@@ -37,8 +37,8 @@ if(state is NavigateBoardingActionState){
             return  Scaffold(
               backgroundColor: Colors.white,
               body: Center(
-                // child: Lottie.network(
-                //     'https://lottie.host/b6764ef6-0e3f-42eb-b3e3-691fcce5e8a6/H3XxpcJcPc.json')
+                child: Lottie.network(
+                    'https://lottie.host/b6764ef6-0e3f-42eb-b3e3-691fcce5e8a6/H3XxpcJcPc.json')
               ),
             );
             

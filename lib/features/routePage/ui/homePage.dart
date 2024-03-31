@@ -1,6 +1,7 @@
 
 import 'package:coffee_shop/features/buyNow/ui/buyNow.dart';
 import 'package:coffee_shop/features/homePage/ui/homePage.dart';
+import 'package:coffee_shop/features/onBoardingPage/ui/onBoardingPage.dart';
 import 'package:coffee_shop/features/wishListPage/ui/wishListPage.dart';
 import 'package:flutter/material.dart';
 

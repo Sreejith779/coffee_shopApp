@@ -14,7 +14,7 @@ class BuyNow extends StatefulWidget {
 
 class _BuyNowState extends State<BuyNow> {
    int count = 1;
-   double totalSum = 1;
+   double totalSum = 0;
   @override
   void initState() {
   buyBloc.add(BuyInitialEvent());
@@ -72,7 +72,7 @@ class _BuyNowState extends State<BuyNow> {
                                 itemCount: buyList.length,
                                 itemBuilder: (context,index){
                                   double totalAmount = buyList[index].price;
-
+totalSum = totalSum + totalAmount;
                                   return SizedBox(
                                     height: 40,
                                     child: Row(
@@ -117,7 +117,7 @@ class _BuyNowState extends State<BuyNow> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                 Text("Total Amount $totalAmount rs",
+                                 Text("Total Amount $totalSum rs",
                                 style: const TextStyle(fontSize: 20,
                                 fontWeight: FontWeight.w600),),
 
