@@ -1,4 +1,5 @@
 
+import 'package:coffee_shop/features/onBoardingPage/ui/onBoardingPage.dart';
 import 'package:flutter/material.dart';
 
 import 'features/routePage/ui/homePage.dart';
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:RoutePage(),
+      home:OnBoardingPage(),
     );
   }
 }
