@@ -25,7 +25,9 @@ class _RoutePageState extends State<RoutePage> {
   Widget build(BuildContext context) {
         return Scaffold(
           backgroundColor: Colors.white,
-          bottomNavigationBar: NavigationBar(
+          bottomNavigationBar:
+
+          NavigationBar(
             elevation: 0,
             onDestinationSelected: (index){
               setState(() {

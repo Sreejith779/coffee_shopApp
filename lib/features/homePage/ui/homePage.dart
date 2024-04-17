@@ -125,9 +125,11 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 350,
                       child: CarouselSlider.builder(
+
                           itemCount: filteredList.length,
                           itemBuilder: (context, index, realIndex) {
-                            return Stack(
+                            return
+                              Stack(
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 30),
@@ -270,6 +272,8 @@ homeBloc.add(FavoriteNavigateEvent(favorite:loadedState.coffeeModel[index]));
                             );
                           },
                           options: CarouselOptions(
+                            enableInfiniteScroll: false,
+                            reverse: true,
                               height: 400,
                               viewportFraction: 0.75,
                               enlargeCenterPage: true)),

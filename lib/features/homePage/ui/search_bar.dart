@@ -52,7 +52,8 @@ class _SearchState extends State<Search> {
                 print("Searching : ${_searchController.text}");
               }, icon:
               const Icon(Icons.search_rounded, color: Colors.white, size: 28,)),
-            ))
+            ),
+        )
       ],
     );
   }

@@ -48,7 +48,7 @@ class _WishListState extends State<WishList> {
                           itemBuilder: (context, index) {
                             bool isEmpty = favoriteList.isNotEmpty;
 
-                       return
+                       return 
                          Container(
                                     padding: const EdgeInsets.all(10),
                                     child:
